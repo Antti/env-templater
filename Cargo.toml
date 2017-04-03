@@ -1,0 +1,9 @@
+[package]
+name = "env-templater"
+version = "0.1.0"
+authors = ["Andrii Dmytrenko <andrii.dmytrenko@fundingcircle.com>"]
+
+[dependencies]
+clap = "2"
+regex = "0.2"
+lazy_static = "*"
