@@ -2,6 +2,8 @@
 name = "env-templater"
 version = "0.1.0"
 authors = ["Andrii Dmytrenko <andrii.dmytrenko@fundingcircle.com>"]
+license = "MIT/Apache-2.0"
+keywords = ["env variables", "template"]
 
 [dependencies]
 clap = "2"

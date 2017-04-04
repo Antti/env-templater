@@ -36,6 +36,23 @@ fn list_matches(input: &[u8]) -> Vec<String> {
     ))
 }
 
+/// = env-templater
+/// templates files with environment variables
+/// replaces accurances of patterns like ${SOME_NAME} with a value of SOME_NAME taken from environment
+///
+/// USAGE:
+///     env-templater [FLAGS] [ARGS]
+///
+/// FLAGS:
+///     -h, --help           Prints help information
+///     -l, --list           List required environment variables
+///     -r, --require-all    Fail if not all enrionent variables available
+///     -V, --version        Prints version information
+///
+/// ARGS:
+///     <input>      [default: /dev/stdin]
+///     <output>     [default: /dev/stdout]
+
 fn main() {
     let matches = App::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
