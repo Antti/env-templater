@@ -15,9 +15,11 @@ fn template<I, O>(input: I, output: O) -> io::Result<usize> where I: Read, O: Wr
     let mut output = BufWriter::new(output);
     let mut total_len = 0;
     for line in input.lines() {
-        let l = format!("{}\n", line.unwrap());
-        total_len += l.len();
-        output.write_all(template_str(&l).as_bytes())?;
+        if let Ok(line) = line {
+            let line = format!("{}\n", line);
+            total_len += line.len();
+            output.write_all(template_str(&line).as_bytes())?;
+        }
     }
     Ok(total_len)
 }
