@@ -1,6 +1,7 @@
 env-templater replaces names of env variables with their values.
 
 ## Code Status
+[![Build Status](https://travis-ci.org/Antti/env-templater.svg?branch=master)](https://travis-ci.org/Antti/env-templater)
 
 ## Installing env-templater
 
