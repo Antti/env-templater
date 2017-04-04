@@ -10,9 +10,12 @@ use std::env;
 use std::collections::HashMap;
 use std::iter::FromIterator;
 
+lazy_static! {
+    static ref RE: Regex = Regex::new(r"\$\{(\w+)\}").unwrap();
+}
+
 fn template<'t>(input: &'t [u8]) -> (::std::borrow::Cow<'t, [u8]>, bool) {
     lazy_static! {
-        static ref RE: Regex = Regex::new(r"\$\{(\w+)\}").unwrap();
         static ref ENV: HashMap<String, String> = HashMap::from_iter(env::vars());
     }
     let mut replaced_all = true;
@@ -28,9 +31,6 @@ fn template<'t>(input: &'t [u8]) -> (::std::borrow::Cow<'t, [u8]>, bool) {
 }
 
 fn list_matches(input: &[u8]) -> Vec<String> {
-    lazy_static! {
-        static ref RE: Regex = Regex::new(r"\$\{(\w+)\}").unwrap();
-    }
     Vec::from_iter(RE.captures_iter(input).map(|caps: Captures|
         String::from_utf8_lossy(caps.get(1).unwrap().as_bytes()).into_owned()
     ))
